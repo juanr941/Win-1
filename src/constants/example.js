@@ -1,6 +1,5 @@
 export const exampleSearchResults ={
-
-    
+  
         count: 4,
         result: [
           {
