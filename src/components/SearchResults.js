@@ -1,26 +1,19 @@
-import React from "react";
+import React from 'react';
 
-const SearchResults =({results}) =>{
+const SearchResults = ({ results }) => {
+  if (!results || results.length === 0) {
+    return null;
+  }
 
-    return(
-        <ul className="absolute top-12 border-2 w-full rounded-md h-64 overflow-y-scroll bg-white border-neutral-200">
-            {/* This search is based on the example.js I took from the api and is in the constants folder.  */}
-        
-        {results.map ((item) =>{
-            return <li key = {item.symbol} className="
-            cursor-pointer p-4 m-2 flex items-center justify-between
-            rounded-md hover:bg-indigo-300">
-                <span> {item.symbol}</span>
-                <span>{item.description}</span>
-            
-            </li>;
-        })}
-        
+  return (
+    <div className="absolute top-10 w-full bg-white border border-gray-200 rounded-md shadow-lg z-50">
+      {results.map((result, index) => (
+        <div key={index} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+          {result.name}
+        </div>
+      ))}
+    </div>
+  );
+};
 
-        </ul>
-
-    )
-    //we check the example.js to verify the tools needed. 
-}
-
-export default SearchResults
+export default SearchResults;
