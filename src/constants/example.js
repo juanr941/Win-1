@@ -131,14 +131,13 @@ export const candleStickChart =
 
 
       export const exampleCompanyDetails =
-
     {
         country: "US",
         currency: "USD",
         exchange: "NASDAQ/NMS (GLOBAL MARKET)",
         ipo: "1980-12-12",
         marketCapitalization :1415993,
-        name: "Apple Inc",
+        Name: {},
         phone: "14089961010",
         shareOutstanding: 4375.47998046875,
         ticker: "AAPL",

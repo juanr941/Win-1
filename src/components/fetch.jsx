@@ -1,20 +1,9 @@
-// import fetchCustomStockData from './services'; 
+
 import fetchCustomStockData2 from './services'; 
-// import formatCustomStockData from'./Utils.js'
-import formatCustomStockData2 from'./Utils.js'
+import formatCustomStockData2, { fetchDescription } from'./Utils.js'
+import fetchCompanyOutlook from './services';  
 
-// fetchCustomStockData()
-//     .then(data => {
-       
-//         const formattedData = formatCustomStockData(data);
-//         console.log(formattedData);
-//     })
-//     .catch(error => {
-//         // Handle errors
-//         console.error('Error:', error);
-//     });
 
-    /////////
 
     const FetchDataComponent = ({ symbol }) => {
         useEffect(() => {
@@ -28,5 +17,21 @@ import formatCustomStockData2 from'./Utils.js'
                 });
         }, [symbol]);
     };
+
+    const fetchCompanyOutlook = ({symbol})=> {
+        useEffect (()=> {
+            fetchDescription (symbol)
+            .then(data => {
+                const formattedDescription = fetchDescription(data);
+                console.log(formattedDescription); // Check the formatted data
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }, [symbol]);
+};
+
+
+
     
-    export default FetchDataComponent;
+    export default {FetchDataComponent , fetchCompanyOutlook};

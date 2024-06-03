@@ -17,37 +17,7 @@ const Details = ({details}) => {
     // Add other properties as needed
   };
 
-//   const summaryProfile = {
-//     longBusinessSummary: "Long Business Summary",
-//     FinancialData: {
-//       profitMargin: "Profit Margin",
-//       grossMargins: "Gross Margins",
-//       operatingMargins: "Operating Margins",
-//       ebitda: "EBITDA",
-//       grossProfit: "Gross Profit",
-//       freeCashFlow: "Free Cash Flow",
-//       forwardEps: "Forward EPS",
-//       exchange:"exchange",
-//       headSymbol:"headSymbol"
 
-
-
-
-//       // Add other FinancialData properties
-//     },
-//   };
-
-
-
-//   const recommendationTrend = {
-//     properties: {
-//       // Add properties for recommendation trend
-//     },
-//   };
-
-
-//   const earnings = "Earnings"; // Example value for earnings
-//   const symbol = "Symbol"; // Example value for symbol
 
 const convertMillionToBillion = (number)=>{
   return(number/100).toFixed(2);
