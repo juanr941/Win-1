@@ -9,9 +9,8 @@ const CompanyOutlookTable = ({ symbol }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log("Fetching data for symbol:", symbol); 
+                
                 const data = await fetchCompanyOutlook(symbol);
-                console.log("Fetched Company Outlook:", data);
                 setCompanyOutlook(data);
 
             } catch (err) {
@@ -33,40 +32,61 @@ const CompanyOutlookTable = ({ symbol }) => {
         <div>
             <h1>Company Outlook for {symbol}</h1>
             {companyOutlook ? (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Symbol</th>
-                            <th>Name</th>
-                            <th>Currency</th>
-                            <th>Exchange</th>
-                            {/* <th>Full-Time Employees</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>State</th>
-                            <th>Zip</th>
-                            <th>DCF Difference</th>
-                            <th>DCF</th> */}
-                        </tr>
-                    </thead>
-                    <tbody className='color-dark'>
-                        <tr>
-                            <td>{companyOutlook.symbol}</td>
-                            <td>{companyOutlook.name}</td>
-                            <td>{companyOutlook.currency}</td>
-                            <td>{companyOutlook.exchangeShortName}</td>
-                            {/* <td>{companyOutlook.fullTimeEmployees}</td>
-                            <td>{companyOutlook.phone}</td>
-                            <td>{companyOutlook.address}</td>
-                            <td>{companyOutlook.city}</td>
-                            <td>{companyOutlook.state}</td>
-                            <td>{companyOutlook.zip}</td>
-                            <td>{companyOutlook.dcfDiff}</td>
-                            <td>{companyOutlook.dcf}</td> */}
-                        </tr>
-                    </tbody>
-                </table>
+          <table>
+          <tbody className='color-dark'>
+              <tr>
+                  <th>Symbol</th>
+                  <td>{companyOutlook.symbol}</td>
+              </tr>
+              <tr>
+                  <th>Name</th>
+                  <td>{companyOutlook.name}</td>
+              </tr>
+              <tr>
+                  <th>Currency</th>
+                  <td>{companyOutlook.currency}</td>
+              </tr>
+              <tr>
+                  <th>Exchange</th>
+                  <td>{companyOutlook.exchangeShortName}</td>
+              </tr>
+              {/* <!-- 
+              <tr>
+                  <th>Full-Time Employees</th>
+                  <td>{companyOutlook.fullTimeEmployees}</td>
+              </tr>
+              <tr>
+                  <th>Phone</th>
+                  <td>{companyOutlook.phone}</td>
+              </tr>
+              <tr>
+                  <th>Address</th>
+                  <td>{companyOutlook.address}</td>
+              </tr>
+              <tr>
+                  <th>City</th>
+                  <td>{companyOutlook.city}</td>
+              </tr>
+              <tr>
+                  <th>State</th>
+                  <td>{companyOutlook.state}</td>
+              </tr>
+              <tr>
+                  <th>Zip</th>
+                  <td>{companyOutlook.zip}</td>
+              </tr>
+              <tr>
+                  <th>DCF Difference</th>
+                  <td>{companyOutlook.dcfDiff}</td>
+              </tr>
+              <tr>
+                  <th>DCF</th>
+                  <td>{companyOutlook.dcf}</td>
+              </tr>
+              --> */}
+          </tbody>
+      </table>
+      
             ) : (
                 <p>No data available</p>
             )}

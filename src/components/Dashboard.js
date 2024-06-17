@@ -42,7 +42,7 @@ const Dashboard = () => {
 
  
   <div className="col-span-1 md:col-span-1 xl:col-span-1 row-span-1">
-    <Overview />
+    <Overview symbol={symbol} />
     
     <div className="col-span-1 md:col-span-1 xl:col-span-1 row-span-1">
     <div>
