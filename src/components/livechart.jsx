@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { candleStickChart } from '../constants/example';
-import { fetchCustomStockData2 } from './services'; // Import fetchCustomStockData2 as named export
-import { formatCustomStockData } from './Utils2'; // Import formatCustomStockData as named export
+import { fetchCustomStockData2 } from './services'; // Import 
+import { formatCustomStockData } from './Utils2'; // Import 
 
 const Livechart = ({ symbol }) => {
   const [stockData, setStockData] = useState([]);

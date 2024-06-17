@@ -22,11 +22,8 @@ export const formatCustomStockData = (stockData) => {
 };
 
 export const formatCompanyOutlook = (data) => {
-    if (data) {
-        return {
-            industry: data.industry,
-            exchange: data.exchange,
-        };
-    }
-    return null;
+    if (!data) return null;
+
+    const { industry, exchange } = data;
+    return { industry, exchange };
 };

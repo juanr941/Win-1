@@ -10,9 +10,11 @@ import Conditions from "./conditions";
 import Livechart from "./livechart";
 import CardFWarren from "./warren_peter";
 import CompanyOutlookTable from "./livechartdescription";
+import Search from "./Search";
 
 const Dashboard = () => {
-    const [symbol, setSymbol] = useState(''); // Start with an empty string
+  const [symbol, setSymbol] = useState("");
+// Start with an empty string
   
     return (
       
@@ -41,9 +43,15 @@ const Dashboard = () => {
  
   <div className="col-span-1 md:col-span-1 xl:col-span-1 row-span-1">
     <Overview />
-    {/* <CompanyOutlookTable/> */}
+    
     <div className="col-span-1 md:col-span-1 xl:col-span-1 row-span-1">
-    <Details details={exampleCompanyDetails} />
+    <div>
+            <Search setSymbol={setSymbol} />
+            <div className="col-span-1 md:col-span-1 xl:col-span-1 row-span-1">
+                <CompanyOutlookTable symbol={symbol} />
+            </div>
+        </div>
+    {/* <Details details={exampleCompanyDetails} /> */}
   </div>
   </div>
 
@@ -51,9 +59,8 @@ const Dashboard = () => {
   
 
  
-  <div className="col-span-1 md:col-span-1 xl:col-span-1 row-span-1">
-    <Conditions searchInput={symbol} />
-  </div>
+  
+
 </div>
 
 
