@@ -54,10 +54,10 @@ export const CompanyOutlookTable = ({ symbol }) => {
               
 
 const Overview =({
-    symbol, price, change, changePercent, currency }) => { return <Card>
+     price, change, changePercent, currency }) => { return <Card>
 
         <span className="absolute left-4 top-4 text-dark-500 text-2xl xl:text-2xl 4xl:text-6xl">
-            {symbol}
+        {/* {companyOutlook.name} */}
         </span>
         <div className="w-full  items-center justify-around">
             <span className="text-4xl xl:text-4xl 2xl:text-4xl flex items-center">

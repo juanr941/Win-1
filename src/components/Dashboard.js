@@ -32,7 +32,9 @@ const Dashboard = () => {
 
 
   <div className="col-span-3 md:col-span-2 xl:col-span-3 row-span-1 flex justify-start items-center">
-    <h3 className="text-color:dark"> Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. </h3>
+    <h3 className="text-color:dark"> Ibm is a multinational technology company that produces and sells computer hardware, software, and middleware  </h3>
+
+    {/* <Description/> */}
   </div>
 
 
@@ -44,10 +46,12 @@ const Dashboard = () => {
   <div className="col-span-1 md:col-span-1 xl:col-span-1 row-span-1">
     <Overview symbol={symbol} />
     
+    
     <div className="col-span-1 md:col-span-1 xl:col-span-1 row-span-1">
     <div>
-            <Search setSymbol={setSymbol} />
+            {/* <Search setSymbol={setSymbol} /> */}
             <div className="col-span-1 md:col-span-1 xl:col-span-1 row-span-1">
+             
                 <CompanyOutlookTable symbol={symbol} />
             </div>
         </div>

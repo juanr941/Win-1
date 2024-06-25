@@ -23,20 +23,24 @@ export const fetchCompanyOutlook = async (symbol) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log("API Response:", data); // Log the API response
-
-        // Ensure the symbol passed to the function is logged
-        console.log("Symbol passed to fetchCompanyOutlook:", symbol);
-
         // Find the specific company information from the array
         const companyInfo = data.find(company => company.symbol.toUpperCase() === symbol.toUpperCase());
         console.log("Company Info:", companyInfo); // Log the specific company info
         return companyInfo || null;
-
 
     } catch (error) {
         console.error('Error fetching company outlook data:', error);
         throw error;
     }
 };
+
+// export const fetchPriceInfo = async (symbol)=> {
+//     const url =`https://financialmodelingprep.com/api/v3/quote-order/${symbol}?apikey=${API_KEY}`;
+
+//     try{
+//         const response = await fetch (url);
+//         const data =await response.json ();
+//     }
+// }
+
 

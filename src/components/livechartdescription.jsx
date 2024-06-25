@@ -34,10 +34,10 @@ const CompanyOutlookTable = ({ symbol }) => {
             {companyOutlook ? (
           <table>
           <tbody className='color-dark'>
-              <tr>
+              {/* <tr>
                   <th>Symbol</th>
                   <td>{companyOutlook.symbol}</td>
-              </tr>
+              </tr> */}
               <tr>
                   <th>Name</th>
                   <td>{companyOutlook.name}</td>
@@ -88,7 +88,7 @@ const CompanyOutlookTable = ({ symbol }) => {
       </table>
       
             ) : (
-                <p>No data available</p>
+                <p> Please type the symbol</p>
             )}
         </div>
     );
