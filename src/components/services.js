@@ -34,13 +34,32 @@ export const fetchCompanyOutlook = async (symbol) => {
     }
 };
 
-// export const fetchPriceInfo = async (symbol)=> {
-//     const url =`https://financialmodelingprep.com/api/v3/quote-order/${symbol}?apikey=${API_KEY}`;
 
-//     try{
-//         const response = await fetch (url);
-//         const data =await response.json ();
-//     }
-// }
+export const fetchCompanyPrice = async (symbol) => {
+    const url = `https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${API_KEY}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log("Price API Response:", data); // Log the API response
+
+        if (data && data.length > 0) {
+            const {
+                price, changesPercentage, currency, dayLow, dayHigh,
+                yearHigh, yearLow, marketCap, priceAvg50, priceAvg200,
+                exchange, volume, avgVolume, open, previousClose, eps, pe
+            } = data[0];
+            return {
+                price, changesPercentage, currency, dayLow, dayHigh,
+                yearHigh, yearLow, marketCap, priceAvg50, priceAvg200,
+                exchange, volume, avgVolume, open, previousClose, eps, pe
+            };
+        }
+        return null;
+    } catch (error) {
+        console.error('Error fetching company price data:', error);
+        throw error;
+    }
+};
 
 
