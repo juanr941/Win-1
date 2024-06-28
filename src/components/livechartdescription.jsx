@@ -32,7 +32,7 @@ const CompanyOutlookTable = ({ symbol }) => {
     }
 
     return (
-        <div className='relative overflow-x-auto shadow-md sm:rounded-lg pt-4'>
+        <div className='relative overflow-x-auto shadow-md sm:rounded-lg pt-4 '>
 
             {companyOutlook && priceInfo ? (
                 <table className="w-full text-lg text-left rtl:text-right text-gray-500 dark:text-gray-100 table-auto">

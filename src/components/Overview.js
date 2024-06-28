@@ -89,17 +89,23 @@ export const CompanyOutlookTable = ({ symbol }) => {
                 {/* Company name or other static text can go here */}
             </span>
             <div className="w-full items-center justify-around">
-                <span className="text-4xl xl:text-4xl 2xl:text-4xl flex items-center">
-                    <br />
+            <h4 className='text-2xl xl:text-2xl 1xl:text-2xl'>Price & Change</h4>
+            
+                <span className="text-4xl xl:text-4xl 2xl:text-4xl flex items-center ">
+                    
                     ${price}
-                    <span className="text-4xl xl:text-4xl 2xl:text-4xl text-neutral-400 m-2">
-                        {currency}
-                    </span>
-                    <span className={`text-4xl xl:text-4xl 2xl:text-4xl ${change > 0 ? "text-lime-400" : "text-red-400"}`}>
+                    
+                    <div>
+                    
+                    <span className={` ms-8 text-4xl xl:text-4xl 2xl:text-4xl ${change > 0 ? "text-green-600" : "text-red-500"}`}>
+                   
+                    
                         {change} <span>({formattedChangePercentage}%)</span>
                     </span>
+                    </div>
                 </span>
-            </div>
+                </div>
+            
         </Card>
     );
 };
