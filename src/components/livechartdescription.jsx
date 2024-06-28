@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchCompanyOutlook } from './services';
 import { fetchCompanyPrice } from './services';
-import { formatCompanyOutlook } from './Utils2';
+import TableRow from './tablerow';
 
 const CompanyOutlookTable = ({ symbol }) => {
     const [companyOutlook, setCompanyOutlook] = useState(null);
@@ -32,83 +32,28 @@ const CompanyOutlookTable = ({ symbol }) => {
     }
 
     return (
-        <div>
-            <h1 className='text-strong'>{symbol}</h1>
+        <div className='relative overflow-x-auto shadow-md sm:rounded-lg pt-4'>
+
             {companyOutlook && priceInfo ? (
-                <table>
-                    <tbody className='color-dark'>
-                        <tr>
-                            <th>Name</th>
-                            <td>{companyOutlook.name}</td>
-                        </tr>
-                        <tr>
-                            <th>Currency</th>
-                            <td>{companyOutlook.currency}</td>
-                        </tr>
-                        <tr>
-                            <th>Exchange</th>
-                            <td>{companyOutlook.exchangeShortName}</td>
-                        </tr>
-                        <tr>
-                            <th>Price</th>
-                            <td>${priceInfo.price}</td>
-                        </tr>
-                        <tr>
-                            <th>Day Low</th>
-                            <td>${priceInfo.dayLow}</td>
-                        </tr>
-                        <tr>
-                            <th>Day High</th>
-                            <td>${priceInfo.dayHigh}</td>
-                        </tr>
-                        <tr>
-                            <th>Year Low</th>
-                            <td>${priceInfo.yearLow}</td>
-                        </tr>
-                        <tr>
-                            <th>Year High</th>
-                            <td>${priceInfo.yearHigh}</td>
-                        </tr>
-                        <tr>
-                            <th>Market Cap</th>
-                            <td>${priceInfo.marketCap}</td>
-                        </tr>
-                        <tr>
-                            <th>Average Volume (50 days)</th>
-                            <td>${priceInfo.priceAvg50}</td>
-                        </tr>
-                        <tr>
-                            <th>Average Volume (200 days)</th>
-                            <td>${priceInfo.priceAvg200}</td>
-                        </tr>
-                        <tr>
-                            <th>Exchange</th>
-                            <td>{priceInfo.exchange}</td>
-                        </tr>
-                        <tr>
-                            <th>Volume</th>
-                            <td>{priceInfo.volume}</td>
-                        </tr>
-                        <tr>
-                            <th>Average Volume</th>
-                            <td>{priceInfo.avgVolume}</td>
-                        </tr>
-                        <tr>
-                            <th>Open</th>
-                            <td>${priceInfo.open}</td>
-                        </tr>
-                        <tr>
-                            <th>Previous Close</th>
-                            <td>${priceInfo.previousClose}</td>
-                        </tr>
-                        <tr>
-                            <th>EPS</th>
-                            <td>{priceInfo.eps}</td>
-                        </tr>
-                        <tr>
-                            <th>PE</th>
-                            <td>{priceInfo.pe}</td>
-                        </tr>
+                <table className="w-full text-lg text-left rtl:text-right text-gray-500 dark:text-gray-100 table-auto">
+                    <tbody>
+                    <TableRow name="Open" value={`$${priceInfo.open}`} index={14} />
+                        <TableRow name="Previous Close" value={`$${priceInfo.previousClose}`} index={15} />
+                        <TableRow name="EPS" value={priceInfo.eps} index={16} />
+                        <TableRow name="PE" value={priceInfo.pe} index={17} />
+                        <TableRow name="Volume" value={priceInfo.volume} index={12} />
+                        <TableRow name="Day Low" value={`$${priceInfo.dayLow}`} index={4} />
+                        <TableRow name="Day High" value={`$${priceInfo.dayHigh}`} index={5} />
+                        <TableRow name="Year Low" value={`$${priceInfo.yearLow}`} index={6} />
+                        <TableRow name="Year High" value={`$${priceInfo.yearHigh}`} index={7} />
+                        <TableRow name="Market Cap" value={`$${priceInfo.marketCap}`} index={8} />
+                        <TableRow name="Average Volume" value={priceInfo.avgVolume} index={13} />
+                        <TableRow name="Average Volume (50 days)" value={`$${priceInfo.priceAvg50}`} index={9} />
+                        {/* <TableRow name="Average Volume (200 days)" value={`$${priceInfo.priceAvg200}`} index={10} /> */}
+                     
+                       
+                        
+
                     </tbody>
                 </table>
             ) : <div>Loading data...</div>}

@@ -28,7 +28,7 @@ const Dashboard = () => {
     <h1 className="text-5xl">{exampleCompanyDetails.name}</h1>
     <Header setSymbol={setSymbol} />
   </div>
-  <div className="col-span-3 md:col-span-2 xl:col-span-3 row-span-1 flex justify-start items-center">
+  <div className="col-span-3 md:col-span-2 xl:col-span-3 row-span-1 flex justify-start items-center m-4">
     <Description symbol ={symbol} />
     
   </div>

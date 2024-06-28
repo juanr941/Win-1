@@ -31,13 +31,17 @@ const Description = ({ symbol }) => {
 
 
     return (
+        <div className="flex items-start space-x-4 pr-3">
+        <img src={companyInfo.image} alt={`${companyInfo.companyName} logo`} className="w-16 h-16" />
         <div>
-            <img src={companyInfo.image} alt={`${companyInfo.companyName} logo`} />
-            <h3 className="text-dark">{companyInfo.companyName}</h3>
-            <p className="text-dark">{limitedInfo}</p>
-            <p className="text-dark">Exchange: {companyInfo.exchange}</p>
-            <p className="text-dark">Sector: {companyInfo.sector}</p>
+            <h1 className="text-xl font-bold">{companyInfo.companyName}</h1>
+            <p className="text-sm">{limitedInfo}</p>
         </div>
+        <div>
+        <p className="text-xl font-bold">Exchange: {companyInfo.exchange}</p>
+            <p className="text-xl font-bold ">Sector: {companyInfo.sector}</p>
+            </div>
+    </div>
     );
 };
 
