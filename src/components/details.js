@@ -14,7 +14,7 @@ const Details = ({details}) => {
     profitMargin: "Profit Margin",
     totalAssets: "Total Assets",
     earningsPerShare: "Earnings per Share",
-    // Add other properties as needed
+    
   };
 
 

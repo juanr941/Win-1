@@ -1,23 +1,3 @@
-// import React from "react";
-// import Search from "./Search";
-// import ThemeIcon from "./Background";
-
-
-// const Header = ({name}) => {
-//     return (
-//     <>
-//     <div className="xl:px-32">
-
-// <h1 className="text-5xl">{name}</h1>
-// <Search/>
-//     </div>
-// <ThemeIcon/>
-//     </>
-//     );
-// };
-
-// export default Header
-// { useState }
 
 import React  from "react";
 import Search from "./Search";
@@ -27,10 +7,19 @@ import ThemeIcon from "./Background";
 const Header = ({ setSymbol }) => {
     return (
       <>
-        <div className="xl:px-32">
+       <ThemeIcon />
+        <div className="flex-1 flex justify-center xl:px-32">
           <Search setSymbol={setSymbol} />
         </div>
-        <ThemeIcon />
+       
+
+        <div class="new-component xl:ml-8">
+
+    </div>
+
+    <div class="flex-1 flex justify-end items-center">
+    <span class="text-lg"> We think what to put here. </span>
+  </div>
       </>
     );
   };

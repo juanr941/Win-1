@@ -1,28 +1,36 @@
 import React, {useState} from "react";
-import Card from "./Card";
-// exampleGetStatistics
 import { exampleCompanyDetails, } from "../constants/example";
-// import Search from "./Search";
-import Header from "./Header"; //search bar
-import Details from "./details";
+import Header from "./Header";
 import Overview from "./Overview";
-import Conditions from "./conditions";
 import Livechart from "./livechart";
 import CardFWarren from "./warren_peter";
 import CompanyOutlookTable from "./livechartdescription";
-import Search from "./Search";
+import Description from "./Description";
+
+// import Search from "./Search";
+// import Details from "./details";
+// import Search from "./Search";
+// import Card from "./Card";
 
 const Dashboard = () => {
   const [symbol, setSymbol] = useState("");
 // Start with an empty string
   
     return (
+
+      
       
       <div className="h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-auto md:grid-rows-auto xl:grid-rows-auto gap-6 p-10 font-afacad bg-neutral-100">
+        
+   
  
   <div className="col-span-3 md:col-span-2 xl:col-span-3 row-span-1 flex justify-start items-center">
     <h1 className="text-5xl">{exampleCompanyDetails.name}</h1>
     <Header setSymbol={setSymbol} />
+  </div>
+  <div className="col-span-3 md:col-span-2 xl:col-span-3 row-span-1 flex justify-start items-center">
+    <Description symbol ={symbol} />
+    
   </div>
 
  
@@ -31,11 +39,8 @@ const Dashboard = () => {
   </div>
 
 
-  <div className="col-span-3 md:col-span-2 xl:col-span-3 row-span-1 flex justify-start items-center">
-    <h3 className="text-color:dark"> Ibm is a multinational technology company that produces and sells computer hardware, software, and middleware  </h3>
 
-    {/* <Description/> */}
-  </div>
+  
 
 
   <div className="col-span-2 md:col-span-1 xl:col-span-2 row-span-1">

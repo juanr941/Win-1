@@ -63,3 +63,22 @@ export const fetchCompanyPrice = async (symbol) => {
 };
 
 
+export const fetchDescription = async (symbol) => {
+    const url = `https://financialmodelingprep.com/api/v3/profile/${symbol}?apikey=${API_KEY}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data && data.length > 0) {
+            const { image, companyName, description, exchange, sector } = data[0];
+            return { image, companyName, description, exchange, sector };
+        }
+        return null;
+    } catch (error) {
+        console.error('Error fetching company description:', error);
+        throw error;
+    }
+};
+
+
+
