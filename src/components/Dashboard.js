@@ -2,8 +2,10 @@ import React, {useState} from "react";
 import { exampleCompanyDetails, } from "../constants/example";
 import Header from "./Header";
 import Overview from "./Overview";
-import Livechart from "./livechart";
+// import Livechart from "./livechart";
+// import Livechart2 from "./livechart2";
 import CardFWarren from "./warren_peter";
+import ChartSwitcher from "./chartswitch";
 import CompanyOutlookTable from "./livechartdescription";
 import Description from "./Description";
 
@@ -43,9 +45,11 @@ const Dashboard = () => {
   
 
 
+ 
   <div className="col-span-2 md:col-span-1 xl:col-span-2 row-span-1">
-    <Livechart symbol={symbol} />
-  </div>
+    <ChartSwitcher symbol={symbol} />
+    </div>
+ 
 
  
   <div className="col-span-1 md:col-span-1 xl:col-span-1 row-span-1">

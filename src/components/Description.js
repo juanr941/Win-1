@@ -35,11 +35,16 @@ const Description = ({ symbol }) => {
         <img src={companyInfo.image} alt={`${companyInfo.companyName} logo`} className="w-16 h-16" />
         <div>
             <h1 className="text-xl font-bold">{companyInfo.companyName}</h1>
-            <p className="text-sm">{limitedInfo}</p>
+            <p className="text-lg">{limitedInfo}</p>
         </div>
         <div>
-        <p className="text-xl font-bold">Exchange: {companyInfo.exchange}</p>
-            <p className="text-xl font-bold ">Sector: {companyInfo.sector}</p>
+        <p className="text-xl">
+  <span className="font-bold">Exchange:</span> {companyInfo.exchange}
+</p>
+<p className="text-xl">
+  <span className="font-bold">Sector:</span> {companyInfo.sector}
+</p>
+           
             </div>
     </div>
     );

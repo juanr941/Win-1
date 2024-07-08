@@ -1,5 +1,43 @@
 const API_KEY = process.env.REACT_APP_API_KEY;
-// console.log("API_KEY:", API_KEY);
+
+const filterDataByTimeframe = (data, timeframe) => {
+    const now = new Date();
+    let startDate;
+
+    switch (timeframe) {
+        case '1D':
+            startDate = new Date(now.setDate(now.getDate() - 1));
+            break;
+        case '5D':
+            startDate = new Date(now.setDate(now.getDate() - 5));
+            break;
+        case '1M':
+            startDate = new Date(now.setMonth(now.getMonth() - 1));
+            break;
+        case '6M':
+            startDate = new Date(now.setMonth(now.getMonth() - 6));
+            break;
+        case 'YTD':
+            startDate = new Date(now.getFullYear(), 0, 1);
+            break;
+        case '1Y':
+            startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+            break;
+        case '5Y':
+            startDate = new Date(now.setFullYear(now.getFullYear() - 5));
+            break;
+        case 'MAX':
+        default:
+            startDate = null; // No filter for MAX
+            break;
+    }
+
+    if (startDate) {
+        return data.filter(entry => new Date(entry.date) >= startDate);
+    }
+
+    return data;
+};
 
 export const fetchCustomStockData2 = async (symbol) => {
     const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?apikey=${API_KEY}`;
@@ -14,6 +52,22 @@ export const fetchCustomStockData2 = async (symbol) => {
 };
 
 export default fetchCustomStockData2;
+
+export const fetchCustomStockData3 = async (symbol, timeframe = '1M') => {
+    const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?apikey=${API_KEY}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const filteredData = filterDataByTimeframe(data.historical, timeframe);
+        return filteredData;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+};
+
+
+
 
 export const fetchCompanyOutlook = async (symbol) => {
     const url = `https://financialmodelingprep.com/api/v3/search?query=${symbol}&apikey=${API_KEY}`;
