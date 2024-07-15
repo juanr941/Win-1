@@ -19,10 +19,6 @@ export const exampleSearchResults ={
           height: '30%',
           type: 'candlestick',
         },
-        title: {
-          text: 'CandleStick Chart - Category X-axis',
-          align: 'left',
-        },
         annotations: {
           xaxis: [
             {
@@ -36,7 +32,7 @@ export const exampleSearchResults ={
                   background: '#00E396',
                 },
                 orientation: 'horizontal',
-                offsetY: 5,
+                offsetY: 1,
                 text: 'Annotation Test',
               },
             },
@@ -49,11 +45,10 @@ export const exampleSearchResults ={
           },
         },
         xaxis: {
-          type: 'category',
+          type: 'datetime',
           labels: {
             formatter: function(val) {
-              // Assuming val is already a properly formatted date string
-              return dayjs(val).format('YYYY MMM');
+              return dayjs(val).format('YYYY MMM DD');
             },
           },
         },
@@ -66,16 +61,11 @@ export const exampleSearchResults ={
           },
         },
       };
-
-
+      
       export const normalChart = {
         chart: {
           height: '30%',
-          type: 'line', // Change to 'line'
-        },
-        title: {
-          text: 'Stock Opening and Closing Prices',
-          align: 'left',
+          type: 'line',
         },
         xaxis: {
           type: 'datetime',
@@ -92,15 +82,15 @@ export const exampleSearchResults ={
         },
         tooltip: {
           x: {
-            format: 'dd MMM yyyy'
-          }
+            format: 'dd MMM yyyy',
+          },
         },
         markers: {
           size: 0,
           style: 'hollow',
         },
       };
-
+      
 
 
       export const exampleCompanyDetails =

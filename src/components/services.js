@@ -6,25 +6,31 @@ const filterDataByTimeframe = (data, timeframe) => {
 
     switch (timeframe) {
         case '1D':
-            startDate = new Date(now.setDate(now.getDate() - 1));
+            startDate = new Date();
+            startDate.setDate(now.getDate() - 1);
             break;
         case '5D':
-            startDate = new Date(now.setDate(now.getDate() - 5));
+            startDate = new Date();
+            startDate.setDate(now.getDate() - 5);
             break;
         case '1M':
-            startDate = new Date(now.setMonth(now.getMonth() - 1));
+            startDate = new Date();
+            startDate.setMonth(now.getMonth() - 1);
             break;
         case '6M':
-            startDate = new Date(now.setMonth(now.getMonth() - 6));
+            startDate = new Date();
+            startDate.setMonth(now.getMonth() - 6);
             break;
         case 'YTD':
             startDate = new Date(now.getFullYear(), 0, 1);
             break;
         case '1Y':
-            startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+            startDate = new Date();
+            startDate.setFullYear(now.getFullYear() - 1);
             break;
         case '5Y':
-            startDate = new Date(now.setFullYear(now.getFullYear() - 5));
+            startDate = new Date();
+            startDate.setFullYear(now.getFullYear() - 5);
             break;
         case 'MAX':
         default:
@@ -39,19 +45,21 @@ const filterDataByTimeframe = (data, timeframe) => {
     return data;
 };
 
-export const fetchCustomStockData2 = async (symbol) => {
+export const fetchCustomStockData2 = async (symbol, timeframe = '1M') => {
     const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?apikey=${API_KEY}`;
 
     try {
         const response = await fetch(url);
         const data = await response.json();
-        return data.historical;
+        const filteredData = filterDataByTimeframe(data.historical, timeframe);
+        return filteredData;
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 };
 
 export default fetchCustomStockData2;
+
 
 export const fetchCustomStockData3 = async (symbol, timeframe = '1M') => {
     const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?apikey=${API_KEY}`;

@@ -4,20 +4,23 @@ import { candleStickChart } from '../constants/example';
 import { fetchCustomStockData2 } from './services'; // Import 
 import { formatCustomStockData } from './Utils2'; // Import 
 
-const Livechart = ({ symbol }) => {
+const Livechart = ({ symbol, dateRange }) => {
   const [stockData, setStockData] = useState([]);
 
   useEffect(() => {
+    const fetchStockData = async () => {
+      try {
+        const data = await fetchCustomStockData2(symbol, dateRange);
+        setStockData(data);
+      } catch (error) {
+        console.error('Error fetching custom stock data:', error);
+      }
+    };
+
     if (symbol) {
-      fetchCustomStockData2(symbol)
-        .then(data => {
-          setStockData(data);
-        })
-        .catch(error => {
-          console.error('Error fetching custom stock data:', error);
-        });
+      fetchStockData();
     }
-  }, [symbol]);
+  }, [symbol, dateRange]);
 
   const seriesData = useMemo(() => formatCustomStockData(stockData), [stockData]);
 
