@@ -1,78 +1,81 @@
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const filterDataByTimeframe = (data, timeframe) => {
-    const now = new Date();
-    let startDate;
+const getDateString = (date) => date.toISOString().split('T')[0];
 
-    switch (timeframe) {
-        case '1D':
-            startDate = new Date();
-            startDate.setDate(now.getDate() - 1);
-            break;
-        case '5D':
-            startDate = new Date();
-            startDate.setDate(now.getDate() - 5);
-            break;
-        case '1M':
-            startDate = new Date();
-            startDate.setMonth(now.getMonth() - 1);
-            break;
-        case '6M':
-            startDate = new Date();
-            startDate.setMonth(now.getMonth() - 6);
-            break;
-        case 'YTD':
-            startDate = new Date(now.getFullYear(), 0, 1);
-            break;
-        case '1Y':
-            startDate = new Date();
-            startDate.setFullYear(now.getFullYear() - 1);
-            break;
-        case '5Y':
-            startDate = new Date();
-            startDate.setFullYear(now.getFullYear() - 5);
-            break;
-        case 'MAX':
-        default:
-            startDate = null; // No filter for MAX
-            break;
-    }
+const getStartDate = (timeframe) => {
+  const now = new Date();
+  let startDate;
 
-    if (startDate) {
-        return data.filter(entry => new Date(entry.date) >= startDate);
-    }
+  switch (timeframe) {
+    case '1D':
+      startDate = new Date();
+      startDate.setDate(now.getDate() - 1);
+      break;
+    case '5D':
+      startDate = new Date();
+      startDate.setDate(now.getDate() - 5);
+      break;
+    case '1M':
+      startDate = new Date();
+      startDate.setMonth(now.getMonth() - 1);
+      break;
+    case '6M':
+      startDate = new Date();
+      startDate.setMonth(now.getMonth() - 6);
+      break;
+    case 'YTD':
+      startDate = new Date(now.getFullYear(), 0, 1);
+      break;
+    case '1Y':
+      startDate = new Date();
+      startDate.setFullYear(now.getFullYear() - 1);
+      break;
+    case '5Y':
+      startDate = new Date();
+      startDate.setFullYear(now.getFullYear() - 5);
+      break;
+    case 'MAX':
+    default:
+      startDate = new Date(0); // Default to Unix epoch start for 'MAX'
+      break;
+  }
 
-    return data;
+  return startDate;
 };
 
-export const fetchCustomStockData2 = async (symbol, timeframe = '1M') => {
-    const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?apikey=${API_KEY}`;
-
+export const fetchCustomStockData2 = async (symbol, timeframe = '5D') => {
+    const startDate = getStartDate(timeframe);
+    const endDate = new Date();
+    const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${getDateString(startDate)}&to=${getDateString(endDate)}&apikey=${API_KEY}`;
+  
+    console.log(`Fetching data for ${symbol} from ${getDateString(startDate)} to ${getDateString(endDate)} with URL: ${url}`);
+  
     try {
-        const response = await fetch(url);
-        const data = await response.json();
-        const filteredData = filterDataByTimeframe(data.historical, timeframe);
-        return filteredData;
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log('API Response:', data);
+      return data.historical || [];
     } catch (error) {
-        console.error('Error fetching data:', error);
+      console.error('Error fetching data:', error);
+      return [];
     }
+  };
+
+export const fetchCustomStockData3 = async (symbol, timeframe = '5D') => {
+  const startDate = getStartDate(timeframe);
+  const endDate = new Date();
+  const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${getDateString(startDate)}&to=${getDateString(endDate)}&apikey=${API_KEY}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.historical || [];
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return [];
+  }
 };
 
-export default fetchCustomStockData2;
-
-
-export const fetchCustomStockData3 = async (symbol, timeframe = '1M') => {
-    const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?apikey=${API_KEY}`;
-
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        const filteredData = filterDataByTimeframe(data.historical, timeframe);
-        return filteredData;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-};
 
 
 

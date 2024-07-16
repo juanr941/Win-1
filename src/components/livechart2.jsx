@@ -11,6 +11,7 @@ const Livechart2 = ({ symbol, dateRange }) => {
     const fetchStockData = async () => {
       try {
         const data = await fetchCustomStockData3(symbol, dateRange);
+        console.log('Fetched Stock Data:', data);
         setStockData(data);
       } catch (error) {
         console.error('Error fetching custom stock data:', error);
