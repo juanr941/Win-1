@@ -17,3 +17,4 @@ const InfoCardWarren = ({ title, value, change, isPositive }) => {
 };
 
 export default InfoCardWarren;
+
